@@ -1,0 +1,18 @@
+How to launch FaceStream with camera from the system:
+
+0. Install Nx Witness and wait for it to discover your onvif camera
+1. get RTSP link for camera from Nx Witness: 
+* open web interface http://127.0.0.1:7001/static/index.html#/view?cameraLinks
+* enable 'Use credentials' checkbox in Camera Details panel
+* enter credentials for Nx Witness
+* copy link adress for High Stream RTSP
+ 
+2. Run facestream with that rtsp
+Example:
+FaceStream2.exe -Src rtsp://admin:admin123@10.1.5.197:7001/e3e9a385-7fe0-3ba5-5482-a86cde7faf48?stream=0 -Dst http://192.168.56.101:9000/facestream/receiver
+
+3. Configure python integration script - open settings.py and check parameters: NOTIFICATION_URL, SUBSCRIPTION_URL, CAMERA_ID, LUNA_LIST, LUNA_TOKEN, TIME_CORRECTION
+
+4.Launch python script to send events to the system:
+cd  itcanfly-luna-stats-c0b659cd813d
+python server.py
