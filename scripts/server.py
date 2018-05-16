@@ -1,7 +1,6 @@
 import json
 import logging
 import urllib
-
 import requests
 import websocket
 import settings
@@ -66,10 +65,8 @@ def process_close(ws):
 
 if __name__ == "__main__":
 
-    # When started as script - connect to server and serve until connection will be dropped
-   
-	#         ?auth_token=eb0bf8f7-e3ef-4e2c-a3ee-43913fec8e28&event_type=match&
-	#list=f8d94008-4426-485e-99ee-c054fe128cd4&event_source=search");
+    # When started as script - connect to server and serve until connection will be dropped  
+	
     ws = websocket.WebSocketApp("{}?auth_token={}&event_type=match".format(settings.SUBSCRIPTION_URL, settings.LUNA_TOKEN),
                                 on_message=process_message,
                                 on_error=process_error,
